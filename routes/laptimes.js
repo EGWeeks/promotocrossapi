@@ -1,9 +1,11 @@
-	 var express = require('express'),
-				router = express.Router(),
-getAllForTrack = require('./laptimes/getAllForTrack');
+'use strict';	 
+
+var express = require('express'),
+		 router = express.Router(),
+ getLapData = require('./laptimes/getlapdata');
 
 
-router.get('/:track', getAllForTrack);
+router.get('/:track', getLapData);
 
 
 module.exports = router;

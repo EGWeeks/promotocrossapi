@@ -8,7 +8,6 @@ cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser');
 
 var routes = require('./routes/index'),
-     users = require('./routes/users'),
   lapTimes = require('./routes/laptimes');
 
 var app = express();
@@ -16,7 +15,7 @@ var app = express();
   // CORS Support
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Methods', 'GET');
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
@@ -34,7 +33,6 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-app.use('/users', users);
 app.use('/laptimes', lapTimes);
 
 // catch 404 and forward to error handler
