@@ -7,6 +7,8 @@ var  express = require('express'),
 cookieParser = require('cookie-parser'),
   bodyParser = require('body-parser');
 
+require('dotenv').config();
+
 var routes = require('./routes/index'),
   lapTimes = require('./routes/laptimes');
 

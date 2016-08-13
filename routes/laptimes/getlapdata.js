@@ -1,7 +1,7 @@
 'use strict';
 
 var mongojs = require('mongojs'),
-	db = mongojs(process.env.DBURL, ['documents']);
+	db = mongojs(process.env.DB_URL, ['documents']);
 
 function getLapData(req, res) {
 	db.documents.find({ track: req.params.track.toUpperCase()}, function(err, docs) {
