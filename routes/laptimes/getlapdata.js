@@ -1,7 +1,7 @@
 'use strict';
 
 var mongojs = require('mongojs'),
-	db = mongojs('mongodb://'+DBUSER+':'+DBPASSWORD+'@ds153815.mlab.com:53815/motocross', ['documents']);
+	db = mongojs('motocross', ['documents']);
 
 function getLapData(req, res) {
 	db.documents.find({ track: req.params.track.toUpperCase()}, function(err, docs) {
