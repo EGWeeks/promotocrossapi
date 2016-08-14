@@ -1,22 +1,52 @@
 extends layout
 
 block content
-  nav.navbar.navbar-default
-    div.container-fluid
-      div.navbar-header
-        a.navbar-brand(href='/') Pro Motocross API
   .container
-    h1 Pro Motocross API
-    p Welcome to the Pro motocross API
-    .row
-      pre
+    nav.navbar.navbar-default
+      div.container
+        div.navbar-header
+          a.navbar-brand(href='/') Pro Motocross API
+    .core
+      .row
+        .col-md-12
+          h4
+            |Access the 2016 Lucas Oil AMA Pro Motocross series data. Updated ever week with Lap Times for all 250 and 450 motos.
+      .row
+        .col-md-12
+          h2.doc-header
+            |Call current moto data by track name
+          hr
+      .row
+        .col-md-9.col-sm-12
+          a
+            samp.language-json(data-lang='json')
+              |https://promotocrossapi.herokuapp.com/laptimes/{track}
+        .col-md-3.col-sm-12
+          ul
+            li 
+              |Hangtown
+            li
+              |Glen-Helen-Raceway
+            li
+              |Thunder-Valley
+            li
+              |High-Point-Raceway
+            li
+              |Muddy-Creek_Raceway
+            li
+              |Redbud
+            li
+              |Wick-338
+            li
+              |Spring-Creek-MX-Park
+            li
+              |Washougal-MX-Park
+            li
+              |Unadilla
+
+      .row
+        // 
+          no Pre tag creates a CLI looking text with gray background
         figure.highlight
           code.language-json(data-lang='json')
             |{"property": "value","array": [{"stuff":"stuff value"},{"stuff":"more stuff value"}]...
-
-    .row
-      // 
-        no Pre tag creates a CLI looking text with gray background
-      figure.highlight
-        code.language-json(data-lang='json')
-          |{"property": "value","array": [{"stuff":"stuff value"},{"stuff":"more stuff value"}]...
