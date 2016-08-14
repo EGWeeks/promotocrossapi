@@ -6,31 +6,26 @@ var mongojs = require('mongojs'),
 
 
 function getByClass(req, res) {
-	var trackName = req.params.track.toUpperCase(),
-			motoClass = req.params.class;
-			errMessage.parameters = req.params;
-	if(motoClass === '250' || motoClass === '450'){
-		motoClass = parseInt(motoClass);
-		db.documents.find({track: trackName, class: motoClass}, function(err, docs) {
-				if(err || docs.length === 0){
-					errMessage.err = err;
-					res.json(errMessage);
-				}else{
-					res.json(docs);
-				}
-			});
-	}else if(motoClass.toUpperCase() === 'BOTH'){
-		db.documents.find({track: trackName}, function(err, docs) {
-				if(err || docs.length === 0){
-					errMessage.err = err;
-					res.json(errMessage);
-				}else{
-					res.json(docs);
-				}
-			});
-	}else{
+	var findBy = {track:req.params.track.toUpperCase()};
+	var motoClass = req.params.class;
+	errMessage.parameters = req.params;
+	
+	if(motoClass === '250' || motoClass === '450') {
+		findBy.class = parseInt(motoClass);
+	}else if(motoClass.toUpperCase() !== 'BOTH') {
+		errMessage.err = "{class} parameter";
 		res.json(errMessage);
+		return;
 	}
+
+	db.documents.find(findBy, function(err, docs) {
+			if(err || docs.length === 0){
+				errMessage.err = err;
+				res.json(errMessage);
+			}else{
+				res.json(docs);
+			}
+		});
 }
 
 
