@@ -14,9 +14,10 @@ block content
         .col-sm-8
           h4
             |API call
-          a
-            samp.language-json(data-lang='json')
-              |https://promotocrossapi.herokuapp.com/laptimes/{track-name}
+          samp.language-json(data-lang='json')
+            span.label.label-primary
+              |GET
+            |&nbsp;https://promotocrossapi.herokuapp.com/laptimes/{track-name}
           h4
             |Description
           p
@@ -26,7 +27,8 @@ block content
           p
             figure.highlight
               code.language-json(data-lang='json')
-                |https://promotocrossapi.herokuapp.com/laptimes/Wick-338
+                a
+                  |https://promotocrossapi.herokuapp.com/laptimes/Wick-338
         .col-sm-4
           ul.list-group
             li.list-group-item
@@ -60,9 +62,10 @@ block content
         .col-sm-8
           h4
             |API call
-          a
-            samp.language-json(data-lang='json')
-              |https://promotocrossapi.herokuapp.com/laptimes/{track-name}/{class}
+          samp.language-json(data-lang='json')
+            span.label.label-primary
+              |GET
+            |&nbsp;https://promotocrossapi.herokuapp.com/laptimes/{track-name}/{class}
           h4
             |Description
           p
@@ -72,7 +75,8 @@ block content
           p
             figure.highlight
               code.language-json(data-lang='json')
-                |https://promotocrossapi.herokuapp.com/laptimes/Glen-Helen-Raceway/250
+                a
+                  |https://promotocrossapi.herokuapp.com/laptimes/Glen-Helen-Raceway/250
         .col-sm-4
           ul.list-group
             li.list-group-item
@@ -92,9 +96,10 @@ block content
         .col-sm-8
           h4
             |API call
-          a
-            samp.language-json(data-lang='json')
-              |https://promotocrossapi.herokuapp.com/laptimes/{track-name}/{class}/{moto-number}
+          span.label.label-primary
+           |GET
+          samp.language-json(data-lang='json')
+            |&nbsp;https://promotocrossapi.herokuapp.com/laptimes/{track-name}/{class}/{moto-number}
           h4
             |Description
           p
@@ -104,10 +109,12 @@ block content
           p
             figure.highlight
               code.language-json(data-lang='json')
-                |https://promotocrossapi.herokuapp.com/laptimes/Redbud/450/2
+                a
+                  |https://promotocrossapi.herokuapp.com/laptimes/Redbud/450/2
                 br
                 br
-                |https://promotocrossapi.herokuapp.com/laptimes/Redbud/both/1
+                a
+                  |https://promotocrossapi.herokuapp.com/laptimes/Redbud/both/1
         .col-sm-4
           ul.list-group
             li.list-group-item
