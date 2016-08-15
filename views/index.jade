@@ -1,52 +1,125 @@
 extends layout
-
 block content
-  .container
-    nav.navbar.navbar-default
-      div.container
-        div.navbar-header
-          a.navbar-brand(href='/') Pro Motocross API
     .core
       .row
-        .col-md-12
+        .col-sm-12
           h4
-            |Access the 2016 Lucas Oil AMA Pro Motocross series data. Updated ever week with Lap Times for all 250 and 450 motos.
+            |Access the 2016 Lucas Oil AMA Pro Motocross series data. Updated ever week during the series with Lap Times for all 250 and 450 motos.
       .row
-        .col-md-12
+        .col-sm-12
           h2.doc-header
             |Call current moto data by track name
           hr
       .row
-        .col-md-9.col-sm-12
+        .col-sm-8
+          h4
+            |API call
           a
             samp.language-json(data-lang='json')
-              |https://promotocrossapi.herokuapp.com/laptimes/{track}
-        .col-md-3.col-sm-12
-          ul
-            li 
+              |https://promotocrossapi.herokuapp.com/laptimes/{track-name}
+          h4
+            |Description
+          p
+            |All API calls must be made with a track name. The API will respond with every lap time of every rider in moto 1 and 2. The response will be seperated by motos and class. Meaning Moto 1 of the 250MX class will be in a single object with all the riders lap times within it.
+          h4
+            |Example of API call
+          p
+            figure.highlight
+              code.language-json(data-lang='json')
+                |https://promotocrossapi.herokuapp.com/laptimes/Wick-338
+        .col-sm-4
+          ul.list-group
+            li.list-group-item
+              |Track Names
+            li.list-group-item 
               |Hangtown
-            li
+            li.list-group-item 
               |Glen-Helen-Raceway
-            li
+            li.list-group-item 
               |Thunder-Valley
-            li
+            li.list-group-item 
               |High-Point-Raceway
-            li
-              |Muddy-Creek_Raceway
-            li
+            li.list-group-item 
+              |Muddy-Creek-Raceway
+            li.list-group-item 
               |Redbud
-            li
+            li.list-group-item 
               |Wick-338
-            li
+            li.list-group-item 
               |Spring-Creek-MX-Park
-            li
+            li.list-group-item 
               |Washougal-MX-Park
-            li
+            li.list-group-item 
               |Unadilla
-
       .row
-        // 
-          no Pre tag creates a CLI looking text with gray background
-        figure.highlight
-          code.language-json(data-lang='json')
-            |{"property": "value","array": [{"stuff":"stuff value"},{"stuff":"more stuff value"}]...
+        .col-sm-12
+          h3.doc-header
+            |Call a track name by bike class
+          hr
+      .row
+        .col-sm-8
+          h4
+            |API call
+          a
+            samp.language-json(data-lang='json')
+              |https://promotocrossapi.herokuapp.com/laptimes/{track-name}/{class}
+          h4
+            |Description
+          p
+            |The API will respond with lap times from the class and track name you specify. The class parameter has an option value of `both` which is available to use when requesting data by moto num. *There's No need to use `both` without a moto number parameter, calling with just a track name will respond with the same data. (More information below)
+          h4
+            |Example of API call
+          p
+            figure.highlight
+              code.language-json(data-lang='json')
+                |https://promotocrossapi.herokuapp.com/laptimes/Glen-Helen-Raceway/250
+        .col-sm-4
+          ul.list-group
+            li.list-group-item
+              |Classes
+            li.list-group-item
+              |250
+            li.list-group-item
+              |450
+            li.list-group-item
+              |both
+      .row
+        .col-sm-12
+          h3.doc-header
+            |Call a track name by bike class and moto number
+          hr
+      .row
+        .col-sm-8
+          h4
+            |API call
+          a
+            samp.language-json(data-lang='json')
+              |https://promotocrossapi.herokuapp.com/laptimes/{track-name}/{class}/{moto-number}
+          h4
+            |Description
+          p
+            |The API will respond with lap times from the moto number, class and track name you specify. For the instance of requesting data for moto 1 of both class we can use the both value in class parameters
+          h4
+            |Example of API call
+          p
+            figure.highlight
+              code.language-json(data-lang='json')
+                |https://promotocrossapi.herokuapp.com/laptimes/Redbud/450/2
+                br
+                br
+                |https://promotocrossapi.herokuapp.com/laptimes/Redbud/both/1
+        .col-sm-4
+          ul.list-group
+            li.list-group-item
+              |moto
+            li.list-group-item
+              |1
+            li.list-group-item
+              |2
+      .row
+        .col-sm-12
+          h3
+            |Example API response
+            hr
+          pre#format-ex
+    <script src='javascripts/jsonExample.js'></script>

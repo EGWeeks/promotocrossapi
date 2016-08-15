@@ -9,8 +9,9 @@ cookieParser = require('cookie-parser'),
 
 require('dotenv').config();
 
-var routes = require('./routes/index'),
-  lapTimes = require('./routes/laptimes');
+var index = require('./routes/index'),
+  contact = require('./routes/contact'),
+ lapTimes = require('./routes/laptimes');
 
 var app = express();
 
@@ -34,7 +35,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', routes);
+app.use('/', index);
+app.use('/contact', contact);
 app.use('/laptimes', lapTimes);
 
 // catch 404 and forward to error handler

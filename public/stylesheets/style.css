@@ -1,12 +1,32 @@
 body {
-  padding: 50px;
+  padding: 25px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.navbar-default .navbar-nav > li > a {
+	color: #00B7FF;
 }
 
 a {
   color: #00B7FF;
 }
 
+h1, h2, h3, h4 {
+	font-weight: 900;
+}
+
 hr {
 	margin-top: 10px;
+}
+
+.page {
+	max-width: 940px;
+}
+
+li {
+	text-align: center;
+}
+
+.list-group li:first-child {
+	font-weight: bold;
 }
