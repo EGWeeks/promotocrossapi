@@ -5,4 +5,4 @@ This repo is for [promotocrossapi.com](https://promotocrossapi.com). Documentati
 I encourage you to [open up an issue](https://github.com/EGWeeks/promotocrossapi/issues) if you have any feedback, suggestions, or bugs.
 
 ##Lisence
-Please refer to this repo's [lisence file](https://github.com/EGWeeks/promotocrossapi/LISENCE).
+Please refer to this repo's [lisence file](https://github.com/EGWeeks/promotocrossapi/blob/master/LICENSE).
