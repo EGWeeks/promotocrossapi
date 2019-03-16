@@ -1,0 +1,22 @@
+{
+  "name": "pmxapi",
+  "version": "2.0.0",
+  "description": "Pro Motocross API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node lib/dev/lint.js"
+  },
+  "author": "Ethan Weeks",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {},
+  "devDependencies": {
+    "aws-sdk": "^2.421.0",
+    "eslint": "^5.15.1",
+    "eslint-config-node": "^4.0.0",
+    "serverless-dynamodb-local": "^0.2.30",
+    "serverless-mocha-plugin": "^1.9.2",
+    "serverless-offline": "^4.9.0",
+    "serverless-prune-plugin": "^1.3.2"
+  }
+}

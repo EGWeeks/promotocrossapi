@@ -1,0 +1,141 @@
+# Welcome to Serverless!
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: pmxapi
+package:
+  exclude:
+    - env.yml
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  environment: ${file(env.yml):${self:provider.stage}}
+  iamRoleStatements:
+    - Effect: "Allow"
+      Action:
+        - dynamodb:Query
+        - dynamodb:GetItem
+      Resource: '*'
+
+functions:
+  getYearTrack:
+    handler: index.getYearTrack
+    events:
+      - http:
+          path: laptimes/{year}/{track}
+          method: get
+          cors: true
+          request: 
+            parameters: 
+              paths: 
+                year: true
+                track: true
+  getClass:
+    handler: index.getClass
+    events:
+      - http:
+          path: laptimes/{year}/{track}/{class}
+          method: get
+          cors: true
+          request: 
+            parameters: 
+              paths: 
+                year: true
+                track: true
+                class: true
+  getClassMoto:
+    handler: index.getClassMoto
+    events:
+      - http:
+          path: laptimes/{year}/{track}/{class}/{moto}
+          method: get
+          cors: true
+          request: 
+            parameters: 
+              paths: 
+                year: true
+                track: true
+                class: true
+                moto: true
+
+# you can add CloudFormation resource templates here
+resources:
+  Resources:
+    pmxAPI:
+      Type: AWS::CloudFront::Distribution
+      Properties:
+        DistributionConfig:
+          Aliases:
+            - '*.api.promotocrossapi.com'
+            - api.promotocrossapi.com
+          ViewerCertificate:
+            SslSupportMethod: sni-only
+            AcmCertificateArn: ${self:provider.environment.ACMARN}
+          Comment: Pro Motocross API
+          DefaultCacheBehavior:
+            TargetOriginId: pmxApiTargetOrigin
+            ViewerProtocolPolicy: 'redirect-to-https'
+            DefaultTTL: 86400
+            ForwardedValues:
+              QueryString: false
+          Enabled: true
+          Origins:
+            - Id: pmxApiTargetOrigin
+              DomainName:
+                Fn::Join:
+                  - "."
+                  - - Ref: ApiGatewayRestApi
+                    - execute-api.${self:provider.region}.amazonaws.com
+              OriginPath: /dev
+              CustomOriginConfig:
+                HTTPPort: 80
+                HTTPSPort: 443
+                OriginProtocolPolicy: https-only
+    lapTimes:
+      Type: AWS::DynamoDB::Table
+      DeletionPolicy: Retain # Warning: If removing & redeploying this resource will have to be manually deleted
+      Properties:
+        TableName: pmxapi-laptimes-${self:provider.stage}
+        AttributeDefinitions:
+          - AttributeName: yearTrack
+            AttributeType: S
+          - AttributeName: classMoto
+            AttributeType: S
+        KeySchema:
+          - AttributeName: yearTrack
+            KeyType: HASH
+          - AttributeName: classMoto
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 2
+          WriteCapacityUnits: 1
+custom:
+  client:
+    bucketName: promotocrossapi.com
+  dynamodb:
+    stages:
+      - local
+    start:
+      port: 8000
+      inMemory: true
+      migrate: true
+      seed: true
+      convertEmptyValues: true
+    seed:
+      dev:
+        sources:
+          - table: pmxapi-laptimes-local
+            sources: [./lib/dev/seed/laptimes.json]
+  prune:
+    automatic: true
+    number: 3
+
+plugins:
+  - serverless-prune-plugin
+  - serverless-dynamodb-local
+  - serverless-offline
+  - serverless-mocha-plugin

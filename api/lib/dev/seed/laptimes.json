@@ -1,0 +1,73 @@
+[
+    {
+        "yearTrack": "18_HANGTOWN",
+        "classMoto": "450_1",
+        "moto": 1,
+        "series": "LUCAS OIL AMA PRO MOTOCROSS",
+        "track": "HANGTOWN",
+        "location": "SACRAMENTO, CA",
+        "round": 1,
+        "date": "MAY 19, 2018",
+        "class": 450,
+        "race": "HANGTOWN MOTOCROSS CLASSIC",
+        "racedata6": "B",
+        "riderData": [
+            {
+                "1": "--.---",
+                "2": "2.23.174",
+                "3": "2.24.520",
+                "4": "2.22.284",
+                "5": "2.20.811",
+                "6": "2.21.995",
+                "7": "2.20.867",
+                "8": "2.19.306",
+                "9": "2.20.034",
+                "10": "2.21.712",
+                "11": "2.21.546",
+                "12": "2.21.761",
+                "13": "2.20.997",
+                "14": "2.24.708",
+                "15": "2.27.086",
+                "number": "#1",
+                "name": "E. Tomac",
+                "bike": "KAW"
+            }
+        ]
+    },
+    {
+        "yearTrack": "18_WICK-338",
+        "classMoto": "450_2",
+        "moto": 2,
+        "series": "LUCAS OIL AMA PRO MOTOCROSS",
+        "track": "WICK-338",
+        "location": "SOUTHWICK, MA",
+        "round": 6,
+        "date": "JUNE 30, 2018",
+        "class": 450,
+        "race": "SOUTHWICK NATIONAL",
+        "racedata6": "B",
+        "riderData": [
+            {
+                "1": "--.---",
+                "2": "2.12.736",
+                "3": "2.13.060",
+                "4": "2.12.819",
+                "5": "2.16.522",
+                "6": "2.31.339",
+                "7": "2.17.144",
+                "8": "2.15.851",
+                "9": "2.30.691",
+                "10": "2.25.337",
+                "11": "2.25.865",
+                "12": "2.24.475",
+                "13": "2.25.467",
+                "14": "2.24.900",
+                "15": "2.26.560",
+                "16": "2.24.206",
+                "number": "#1",
+                "name": "E. Tomac",
+                "bike": "KAW"
+            }
+        ]
+    }
+]
