@@ -22,17 +22,18 @@ Example: `sls deploy --stage dev --aws-profile your-named-profile`
 1. Clone repository
 2. `yarn install`
 3. Install DynamoDB locally: `sls dynamodb install`
-4. 
-5. Add environment variables:
+4. Add environment variables:
     - Create file named: env.yml
     - Add a local env:
-         ```local:
+         ```
+            local:
                 STAGE: local
                 REGION: localhost
                 DBURL: http://localhost:8000
             dev:
                 STAGE: dev
                 REGION: ${opt:region, 'us-east-1'}
-                DBURL: https://dynamodb.${opt:region, 'us-east-1'}.amazonaws.com```
-6. Start SLS Offline/DynamoDB locally: `sls offline start --stage local` 
-7. Run tests by opening seperate terminal window: `sls invoke test --stage local`
+                DBURL: https://dynamodb.${opt:region, 'us-east-1'}.amazonaws.com
+         ```
+5. Start SLS Offline/DynamoDB locally: `sls offline start --stage local` 
+6. Run tests by opening seperate terminal window: `sls invoke test --stage local`
