@@ -9,7 +9,7 @@ describe('getYearTrack', () => {
 
   it('should return 422 if year path param is invalid', () => {
     const pathParameters = { year: '2018', track: 'WICK-338' }
-    const earliestYear = 14
+    const earliestYear = 16
     const thisYear = new Date().getFullYear().toString().slice(2)
     return wrapped.run({ pathParameters }).then((res) => {
       expect(res).to.not.be.empty

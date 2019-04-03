@@ -37,3 +37,5 @@ Example: `sls deploy --stage dev --aws-profile your-named-profile`
          ```
 5. Start SLS Offline/DynamoDB locally: `sls offline start --stage local` 
 6. Run tests by opening seperate terminal window: `sls invoke test --stage local`
+
+**Warning:** sls dynamodb local is a bit inconsistent. Version in package.json is static because the latest release didn't work with sls offline. If `sls offline start --stage local` stops working, I've had a bit of luck by uninstalling and rerunning `sls dynamodb install`. 
