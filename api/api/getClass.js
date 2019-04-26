@@ -14,8 +14,8 @@ module.exports = async event => {
 		console.log(`Event: ${JSON.stringify(event, null, 2)}`)
 
 		const year = valid.year(event.pathParameters.year)
-        const track = valid.track(event.pathParameters.track)
-        const raceClass = valid.class(event.pathParameters.class)
+		const track = valid.track(event.pathParameters.track)
+		const raceClass = valid.class(event.pathParameters.class)
 
 		const { Items } = await user.queryByClass(year, track, raceClass)
 
